@@ -1,0 +1,129 @@
+{
+	"info": {
+		"_postman_id": "95de6efe-6e0a-4400-8593-4d6417cfa0cb",
+		"name": "Teste NOS Nayara",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36005346",
+		"_collection_link": "https://martian-shuttle-563436.postman.co/workspace/Nayara-Team-Workspace~098712f0-423e-4802-8925-93be876fa451/collection/36005346-95de6efe-6e0a-4400-8593-4d6417cfa0cb?action=share&source=collection_link&creator=36005346"
+	},
+	"item": [
+		{
+			"name": "Automation Testing",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Obter a resposta da API\r",
+							"const response = pm.response.json();\r",
+							"\r",
+							"// Testar se todos os itens têm status 'completed'\r",
+							"pm.test(\"All items have status 'completed'\", function() {\r",
+							"    response.forEach(item => {\r",
+							"        pm.expect(item.status).to.eql('completed');\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"// Função para validar o formato da data\r",
+							"function isValidDate(dateString) {\r",
+							"    const regex = /^\\d{4}-\\d{2}-\\d{2}$/;  // Formato YYYY-MM-DD\r",
+							"    if(!dateString.match(regex)) {\r",
+							"        return false;\r",
+							"    }\r",
+							"    const date = new Date(dateString);\r",
+							"    const timestamp = date.getTime();\r",
+							"    if(typeof timestamp !== 'number' || Number.isNaN(timestamp)) {\r",
+							"        return false;\r",
+							"    }\r",
+							"    return date.toISOString().startsWith(dateString);\r",
+							"}\r",
+							"\r",
+							"// Testar se o campo 'due_on' é uma data válida\r",
+							"pm.test(\"All items have a valid 'due_on' date\", function() {\r",
+							"    response.forEach(item => {\r",
+							"        pm.expect(isValidDate(item.due_on)).to.be.true;\r",
+							"    });\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "b71326730a20d85cd2013ddeba387b3ac9a0c21a88297c2e8248b4ae75799781",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n  {\r\n    \"id\": 53640,\r\n    \"user_id\": 6946985,\r\n    \"title\": \"Auctus coniuratio adimpleo minima suggero sit accipio.\",\r\n    \"due_on\": \"2024-06-18T00:00:00.000+05:30\",\r\n    \"status\": \"pending\"\r\n  },\r\n  {\r\n    \"id\": 53639,\r\n    \"user_id\": 6946980,\r\n    \"title\": \"Supra cumque cura somniculosus commodo commodi.\",\r\n    \"due_on\": \"2024-06-22T00:00:00.000+05:30\",\r\n    \"status\": \"pending\"\r\n  },\r\n  {\r\n    \"id\": 53638,\r\n    \"user_id\": 6946977,\r\n    \"title\": \"Vociferor earum vado peior ut architecto video celo.\",\r\n    \"due_on\": \"2024-06-25T00:00:00.000+05:30\",\r\n    \"status\": \"pending\"\r\n  },\r\n  {\r\n    \"id\": 53637,\r\n    \"user_id\": 6946974,\r\n    \"title\": \"Thermae inventore vulticulus trans beatus derelinquo desidero.\",\r\n    \"due_on\": \"2024-06-20T00:00:00.000+05:30\",\r\n    \"status\": \"pending\"\r\n  },\r\n  {\r\n    \"id\": 53636,\r\n    \"user_id\": 6946971,\r\n    \"title\": \"Nulla amita denuo capillus esse deludo voluptas venustas enim.\",\r\n    \"due_on\": \"2024-07-04T00:00:00.000+05:30\",\r\n    \"status\": \"completed\"\r\n  },\r\n  {\r\n    \"id\": 53635,\r\n    \"user_id\": 6946970,\r\n    \"title\": \"Dedico tergiversatio comis victoria truculenter et carpo statua tergum.\",\r\n    \"due_on\": \"2024-06-29T00:00:00.000+05:30\",\r\n    \"status\": \"completed\"\r\n  },\r\n  {\r\n    \"id\": 53634,\r\n    \"user_id\": 6946965,\r\n    \"title\": \"Temeritas vilitas non appositus suppono.\",\r\n    \"due_on\": \"2024-06-07T00:00:00.000+05:30\",\r\n    \"status\": \"completed\"\r\n  },\r\n  {\r\n    \"id\": 53633,\r\n    \"user_id\": 6946963,\r\n    \"title\": \"Allatus acidus volo tego vomica est tamquam.\",\r\n    \"due_on\": \"2024-06-30T00:00:00.000+05:30\",\r\n    \"status\": \"pending\"\r\n  },\r\n  {\r\n    \"id\": 53632,\r\n    \"user_id\": 6946959,\r\n    \"title\": \"Cursus administratio volo cotidie repellendus est utpote alter.\",\r\n    \"due_on\": \"2024-06-08T00:00:00.000+05:30\",\r\n    \"status\": \"pending\"\r\n  },\r\n  {\r\n    \"id\": 53631,\r\n    \"user_id\": 6946956,\r\n    \"title\": \"Tergo tantum sit colligo nostrum.\",\r\n    \"due_on\": \"2024-06-28T00:00:00.000+05:30\",\r\n    \"status\": \"completed\"\r\n  }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://gorest.co.in/public/v2/todos",
+					"protocol": "https",
+					"host": [
+						"gorest",
+						"co",
+						"in"
+					],
+					"path": [
+						"public",
+						"v2",
+						"todos"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "b71326730a20d85cd2013ddeba387b3ac9a0c21a88297c2e8248b4ae75799781",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
